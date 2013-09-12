@@ -145,8 +145,9 @@ function drizzle_grizzle($f)
 			$n = ($d->precipProbability * 6);
 			$graph .= num_to_bar(round($n));
 		}
-		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
+		
 		$output .= date("h:i", $f->minutely->data[0]->time)."\n";
+		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
 	}
 	return $output;
 }
