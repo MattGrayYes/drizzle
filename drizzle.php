@@ -140,6 +140,7 @@ function echo_drizzle($f)
 			$graph .= num_to_bar(round($n));
 		}
 		echo num_to_bar(6).$graph.num_to_bar(6)."\n";
+		echo date("h:i", $f->minutely->data[0]->time)."\n";
 	}	
 }
 
