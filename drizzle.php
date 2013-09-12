@@ -92,8 +92,8 @@ else
 	}
 	else
 	{	
-		echo_summary($f);
-		echo_drizzle($f);
+		echo summary($f);
+		echo drizzle_grizzle($f);
 	}
 }
 
@@ -115,22 +115,28 @@ function print_usage()
 	echo "I'm not affiliated, I just found it useful!\n";
 }
 
-function echo_summary($f)
+function summary($f)
 {
-		$temp = $f->currently->temperature;
-		$summary= $f->currently->summary;
-		$rain= $f->currently->precipProbability;
-		echo round($temp).$GLOBALS['deg']."C, ".$summary.", ". $rain*100 ."% chance of rain\n"; 
+	$output ="";
+	$temp = $f->currently->temperature;
+	$rain= $f->currently->precipProbability;
+	$daysummary = $f->hourly->summary;			
 
-		if( isset($f->minutely) )
-			echo $f->minutely->summary . "\n";
+	if( isset($f->minutely) )
+		$summary = $f->minutely->summary;
+	else
+		$summary = $f->currently->summary;
 		
-		$daysummary= $f->hourly->summary;			
-		echo $daysummary."\n";
+	$output .= round($temp).$GLOBALS['deg']."C. ".$summary." ". $rain*100 ."% chance of rain right now.\n"; 
+	$output .= $daysummary."\n";
+	
+	return $output;
 }
 
-function echo_drizzle($f)
+//drizzle graph
+function drizzle_grizzle($f)
 {
+	$output ="";
 	if( isset($f->minutely) )
 	{
 		$graph = "";
@@ -139,9 +145,10 @@ function echo_drizzle($f)
 			$n = ($d->precipProbability * 6);
 			$graph .= num_to_bar(round($n));
 		}
-		echo num_to_bar(6).$graph.num_to_bar(6)."\n";
-		echo date("h:i", $f->minutely->data[0]->time)."\n";
-	}	
+		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
+		$output .= date("h:i", $f->minutely->data[0]->time)."\n";
+	}
+	return $output;
 }
 
 function num_to_bar($n)
