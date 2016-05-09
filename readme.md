@@ -17,11 +17,14 @@ Usage
 ###Example
 `$ ./drizzle.php 51.503355,-0.119723`
 
-`13°C, Mostly Cloudy, 0% chance of rain`
-
-`Mostly cloudy for the hour.`
-
-`Light rain tomorrow evening.`
+`17°C. Mostly cloudy for the hour. 0% chance of rain right now.`
+`Light rain starting later tonight.`
+``
+`Next hour's rain as of 22:36: `
+`▇▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▇`
+``
+`Next 24 hours' rain as of 22:00:`
+`▇▂▁▂▂▃▄▄▄▄▄▄▄▃▃▄▄▄▄▄▄▄▄▄▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▂▂▂▃▃▃▃▃▂▁▁▇`
 
 
 Download
