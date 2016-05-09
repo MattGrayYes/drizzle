@@ -12,7 +12,7 @@
 // http://iharder.sourceforge.net/current/macosx/locateme/
 // I'm not affiliated, I just found it useful!
 
-
+ date_default_timezone_set("Europe/London");
 
 //Defaults
 //$lat_long= "51.503355,-0.119723";
@@ -146,7 +146,7 @@ function drizzle_grizzle($f)
 			$graph .= num_to_bar(round($n));
 		}
 		
-		$output .= date("h:i", $f->minutely->data[0]->time)."\n";
+		$output .= date("H:i", $f->minutely->data[0]->time)."\n";
 		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
 	}
 	return $output;
