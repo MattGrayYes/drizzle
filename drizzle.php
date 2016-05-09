@@ -146,7 +146,20 @@ function drizzle_grizzle($f)
 			$graph .= num_to_bar(round($n));
 		}
 		
-		$output .= date("H:i", $f->minutely->data[0]->time)."\n";
+		$output .= "\nNext hour's rain as of " .date("H:i", $f->minutely->data[0]->time).": \n";
+		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
+	}
+	
+	if( isset($f->hourly) )
+	{
+		$graph = "";
+		foreach( $f->hourly->data as $d)
+		{	
+			$n = ($d->precipProbability * 6);
+			$graph .= num_to_bar(round($n));
+		}
+		
+		$output .= "\nNext 24 hours' rain as of " .date("H:i", $f->hourly->data[0]->time).":\n";
 		$output .= num_to_bar(6).$graph.num_to_bar(6)."\n";
 	}
 	return $output;
